@@ -1,5 +1,5 @@
 /**
- * This exercise is to practice how to write method inside class
+ * This exercise is to practice how to write method inside class (Overloaded)
  * @author VuongChu
  *
  */
