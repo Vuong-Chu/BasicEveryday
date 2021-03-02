@@ -8,7 +8,16 @@ public class BasicThread {
     public static void main(String[] args) {
         Thread t1 = new Thread(new machine());
         t1.start();
-        Thread t2 = new Thread(new machine());
+        
+        Thread t2 = new Thread() {
+            public void run() {
+                for(long i=1; i<=20_000_000;i++) {
+                    synchronized(BasicThread.class) {
+                        count++;
+                    }
+                }
+            }
+        };
         t2.start();
         
         for(long i=1; i<=10_000_000;i++) {
@@ -41,6 +50,3 @@ class machine implements Runnable {
        }
     } 
 }
-    
-
-
