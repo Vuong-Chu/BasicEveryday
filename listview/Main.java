@@ -16,7 +16,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 	    this.primaryStage = primaryStage;
-	    Parent root = FXMLLoader.load(Main.class.getResource("/application/View.fxml"));
+	    Parent root = FXMLLoader.load(Main.class.getResource("/listview/View.fxml"));
 	    Scene scene = new Scene(root);
 	    this.primaryStage.setScene(scene);
 	    this.primaryStage.setTitle("Basic Game");
