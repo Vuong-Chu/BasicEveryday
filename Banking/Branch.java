@@ -20,12 +20,32 @@ public class Branch {
         return customers;
     }
     public boolean newCustomer(String name, double initialTransaction){
-        return true;
+        try{
+            if(findCustomer(name)==null) {
+                Customer newOne = new Customer(name);
+                newOne.addTransaction(initialTransaction);
+                customers.add(newOne);
+            }
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
     public boolean addCustomerTransaction(String name, double transaction){
-        return true;
+        try {
+            findCustomer(name).addTransaction(transaction);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
     private Customer findCustomer(String name){
+        for(Customer customer: customers){
+            if(customer.getName().equals(name)){
+                return customer;
+            }
+        }
         return null;
+
     }
 }

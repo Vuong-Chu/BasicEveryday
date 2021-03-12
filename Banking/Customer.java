@@ -20,6 +20,6 @@ public class Customer {
         return transactions;
     }
     public void addTransaction(double transaction){
-
+        transactions.add(transaction);
     }
 }

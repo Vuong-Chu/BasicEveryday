@@ -13,16 +13,71 @@ public class Bank {
     }
 
     public boolean addBranch(String name){
-        new Branch(name);
-        return true;
+        try {
+            if(findBranch(name)==null) {
+                branches.add(new Branch(name));
+            }
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean addCustomer(String branchName, String customerName, double initialTransaction){
+        try{
+            findBranch(branchName).newCustomer(customerName, initialTransaction);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean addCustomerTransaction(String branchName, String customerName, double transaction){
+        try{
+            findBranch(branchName).addCustomerTransaction(customerName, transaction);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     private Branch findBranch(String name){
+        for(Branch branch: branches){
+            if(branch.getName().equals(name)){
+                return branch;
+            }
+        }
         return null;
     }
 
     public boolean listCustomers(String branchName, boolean printTransaction){
-        return true;
+        System.out.println("Customer details for branch "+branchName);
+        if(printTransaction) {
+            try {
+                for (Customer customer : findBranch(branchName).getCustomers()) {
+                    System.out.println("Customer: " + customer);
+                }
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }else{
+            try {
+                int i=1;
+                for (Customer customer : findBranch(branchName).getCustomers()) {
+                    System.out.println("["+ i++ +"]" +" Customer: " + customer.getName());
+                    int j=1;
+                    System.out.println("Transactions:");
+                    for(double transaction: customer.getTransactions()){
+                        System.out.println("["+ j++ +"]" + "Amount: "+transaction);
+                    }
+                    System.out.println();
+                }
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
     }
 
 
