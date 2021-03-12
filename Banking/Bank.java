@@ -52,10 +52,10 @@ public class Bank {
 
     public boolean listCustomers(String branchName, boolean printTransaction){
         System.out.println("Customer details for branch "+branchName);
-        if(printTransaction) {
+        if(!printTransaction) {
             try {
                 for (Customer customer : findBranch(branchName).getCustomers()) {
-                    System.out.println("Customer: " + customer);
+                    System.out.println("Customer: " + customer.getName());
                 }
                 return true;
             } catch (Exception e) {
