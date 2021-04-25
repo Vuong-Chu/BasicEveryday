@@ -1,5 +1,5 @@
 import java.util.*;
-
+//If we have comparable types, we use compareTo(); if not, we use equals().
 public class ComparatorComparable {
 
     public static void main(String[] args) {
