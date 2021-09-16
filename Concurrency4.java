@@ -19,7 +19,7 @@ public class Concurrency4 {
 }
 
 class Counter{
-    volatile boolean done = false;
+    boolean done = false;
     int sum;
     public synchronized void getCounter(){
         System.out.println(Thread.currentThread().getName() +" is starting.");
@@ -27,7 +27,7 @@ class Counter{
             sum++;
         }
         done = true;
-        notify();
+        notify(); //wake up a single random thread in the same object
     }
 
     public synchronized void continueCounter(){
